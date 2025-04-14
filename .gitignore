@@ -135,6 +135,7 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+tronrace/
 
 # Spyder project settings
 .spyderproject
