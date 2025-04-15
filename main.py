@@ -26,12 +26,14 @@ SCREEN_HEIGHT = 600
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Snail Race Tron")
 
-menu_background = pygame.image.load("/home/reboot-student/code/labs/TronRace/menu-bg.jpg").convert_alpha()
-player1_sprite = pygame.image.load("/home/reboot-student/code/labs/TronRace/player1.png").convert_alpha()
-player2_sprite = pygame.image.load("/home/reboot-student/code/labs/TronRace/player2.png").convert_alpha()
+# Use relative paths based on current directory
+current_dir = os.path.dirname(os.path.abspath(__file__))
+menu_background = pygame.image.load(os.path.join(current_dir, "menu-bg.jpg")).convert_alpha()
+player1_sprite = pygame.image.load(os.path.join(current_dir, "player1.png")).convert_alpha()
+player2_sprite = pygame.image.load(os.path.join(current_dir, "player2.png")).convert_alpha()
 player1_sprite = pygame.transform.scale(player1_sprite, (60, 60))
 player2_sprite = pygame.transform.scale(player2_sprite, (60, 60))
-background_img = pygame.image.load("/home/reboot-student/code/labs/TronRace/tron-bg.jpg").convert()
+background_img = pygame.image.load(os.path.join(current_dir, "tron-bg.jpg")).convert()
 background_img = pygame.transform.scale(background_img, (SCREEN_WIDTH, SCREEN_HEIGHT))
 menu_background = pygame.transform.scale(menu_background, (SCREEN_WIDTH, SCREEN_HEIGHT))
 
@@ -45,7 +47,8 @@ def load_animation_frames(folder):
             frames.append(frame)
     return frames
 
-background_frames = load_animation_frames("/home/reboot-student/code/labs/TronRace/tron_frames")
+# Use relative path for animation frames
+background_frames = load_animation_frames(os.path.join(current_dir, "tron_frames"))
 
 def play_intro_animation(frames, screen, duration=3000, fps=15):
     clock = pygame.time.Clock()
